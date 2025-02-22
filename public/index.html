@@ -18,6 +18,13 @@
         <main>
             <form id="intervalForm" class="interval-form">
                 <div class="input-group">
+                    <label for="prepTime">Время на подготовку</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="prepTime" name="prepTime" required min="1" value="10">
+                        <span class="unit">сек</span>
+                    </div>
+                </div>
+                <div class="input-group">
                     <label for="workTime">Время гребли</label>
                     <div class="input-wrapper">
                         <input type="number" id="workTime" name="workTime" required min="1">
@@ -46,11 +53,15 @@
                 </button>
             </form>
 
-            <div id="timer" class="timer-display"></div>
+            <div id="timer" class="timer-display">
+                <div class="progress-bar"></div>
+            </div>
+            <button id="pauseButton" class="pause-button hidden">Пауза</button>
         </main>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
+    <script src="sounds.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
