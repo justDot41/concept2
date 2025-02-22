@@ -5,7 +5,6 @@ const socketIo = require('socket.io');
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
-const port = process.env.PORT || 3000;
 
 app.use(express.static('public'));
 
@@ -19,10 +18,11 @@ io.on('connection', (socket) => {
             return;
         }
         timerActive = true;
-        const { workTime, restTime, repeats } = data;
+        const { prepTime, workTime, restTime, repeats } = data;
         let currentRepeat = 0;
         let isWorking = true;
-        let timeLeft = workTime;
+        let isPreparing = true;
+        let timeLeft = prepTime;
 
         function updateTimer() {
             // Отправляем текущее состояние таймера всем клиентам
@@ -32,13 +32,18 @@ io.on('connection', (socket) => {
                 repeats,
                 currentRepeat,
                 isWorking,
-                timeLeft
+                timeLeft,
+                isPreparing
             });
 
             if (timeLeft > 0) {
                 timeLeft--;
             } else {
-                if (isWorking) {
+                if (isPreparing) {
+                    isPreparing = false;
+                    isWorking = true;
+                    timeLeft = workTime;
+                } else if (isWorking) {
                     isWorking = false;
                     timeLeft = restTime;
                 } else {
@@ -68,6 +73,6 @@ io.on('connection', (socket) => {
     });
 });
 
-server.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-  })
+server.listen(3000, () => {
+    console.log('Сервер запущен на порту 3000');
+});

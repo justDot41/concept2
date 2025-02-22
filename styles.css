@@ -1,0 +1,223 @@
+
+:root {
+    --primary-color: #2196F3;
+    --secondary-color: #1976D2;
+    --success-color: #4CAF50;
+    --danger-color: #f44336;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+}
+
+.interval-form {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.interval-form.hidden {
+    opacity: 0;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.unit {
+    position: absolute;
+    right: 1rem;
+    color: #666;
+}
+
+.start-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: var(--secondary-color);
+}
+
+.pause-button {
+    width: 100%;
+    max-width: 200px;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    display: block;
+}
+
+.pause-button.hidden {
+    display: none;
+}
+
+.timer-display {
+    margin-top: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    font-size: 2.5rem;
+    font-weight: 700;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+}
+
+.timer-display.prep-phase-5 {
+    background: #fff3e0;
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(255, 152, 0, 0.2);
+}
+
+.timer-display.prep-phase-3 {
+    background: #ffe0e0;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(244, 67, 54, 0.3);
+}
+
+.timer-display.prep-phase-final {
+    animation: pulseStart 1s ease;
+}
+
+.timer-display.work-phase {
+    background: #e3f2fd;
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(33, 150, 243, 0.2);
+}
+
+.timer-display.work-phase-end {
+    background: #bbdefb;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(33, 150, 243, 0.3);
+}
+
+.timer-display.rest-phase {
+    background: #e8f5e9;
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(76, 175, 80, 0.2);
+}
+
+.timer-display.rest-phase-end {
+    background: #c8e6c9;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes pulseStart {
+    0% { transform: scale(1.05); background: #ffe0e0; }
+    50% { transform: scale(1.1); background: #e3f2fd; }
+    100% { transform: scale(1); background: white; }
+}
+
+.progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: var(--primary-color);
+    transition: width 0.1s linear;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .interval-form {
+        padding: 1.5rem;
+    }
+    
+    .timer-display {
+        font-size: 2rem;
+        padding: 1.5rem;
+    }
+}
