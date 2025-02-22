@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concept 2 Trainer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Concept 2 Timer</h1>
+            <p class="subtitle">Настройте свою интервальную тренировку</p>
+        </header>
+        
+        <main>
+            <form id="intervalForm" class="interval-form">
+                <div class="input-group">
+                    <label for="workTime">Время гребли</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="workTime" name="workTime" required min="1">
+                        <span class="unit">сек</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="restTime">Время отдыха</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="restTime" name="restTime" required min="1">
+                        <span class="unit">сек</span>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="repeats">Повторения</label>
+                    <div class="input-wrapper">
+                        <input type="number" id="repeats" name="repeats" required min="1">
+                        <span class="unit">раз</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="start-button">
+                    Начать тренировку
+                </button>
+            </form>
+
+            <div id="timer" class="timer-display"></div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
